@@ -650,6 +650,26 @@ var Diagnostic = (function(){
 			'switchToWifiSettings',
 			[]);
 	};
+	/**
+	 * Switches to the wireless settings page in the Settings app
+	 */
+	Diagnostic.switchToWirelessSettings = function() {
+		return cordova.exec(null,
+			null,
+			'Diagnostic',
+			'switchToWirelessSettings',
+			[]);
+	};
+	/**
+	 * Switches to the nfc settings page in the Settings app
+	 */
+	Diagnostic.switchToNFCSettings = function() {
+		return cordova.exec(null,
+			null,
+			'Diagnostic',
+			'switchToNFCSettings',
+			[]);
+	};
 
 	/**
 	 * Enables/disables WiFi on the device.

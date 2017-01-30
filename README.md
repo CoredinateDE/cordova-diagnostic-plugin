@@ -27,6 +27,7 @@ Cordova diagnostic plugin [![Latest Stable Version](https://img.shields.io/npm/v
     - [switchToMobileDataSettings()](#switchtomobiledatasettings)
     - [switchToBluetoothSettings()](#switchtobluetoothsettings)
     - [switchToWifiSettings()](#switchtowifisettings)
+    - [switchToNFCSettings()](#switchtonfcsettings)
     - [isWifiEnabled()](#iswifienabled)
     - [setWifiState()](#setwifistate)
     - [setBluetoothState()](#setbluetoothstate)
@@ -349,6 +350,12 @@ Displays Bluetooth settings to allow user to enable Bluetooth.
 Displays WiFi settings to allow user to enable WiFi.
 
     cordova.plugins.diagnostic.switchToWifiSettings();
+
+### switchToNFCSettings()
+
+Displays NFC settings to allow user to enable NFC.
+
+    cordova.plugins.diagnostic.switchToNFCSettings();
 
 ### isWifiEnabled()
 

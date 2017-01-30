@@ -253,6 +253,12 @@ public class Diagnostic extends CordovaPlugin{
             } else if (action.equals("switchToWifiSettings")){
                 switchToWifiSettings();
                 callbackContext.success();
+            } else if (action.equals("switchToWirelessSettings")){
+                switchToWirelessSettings();
+                callbackContext.success();
+            } else if (action.equals("switchToNFCSettings")){
+                switchToNFCSettings();
+                callbackContext.success();
             } else if(action.equals("isLocationAvailable")) {
                 callbackContext.success(isGpsLocationAvailable() || isNetworkLocationAvailable() ? 1 : 0);
             } else if(action.equals("isLocationEnabled")) {
@@ -444,6 +450,20 @@ public class Diagnostic extends CordovaPlugin{
     public void switchToWifiSettings() {
         Log.d(TAG, "Switch to Wifi Settings");
         Intent settingsIntent = new Intent(Settings.ACTION_WIFI_SETTINGS);
+        cordova.getActivity().startActivity(settingsIntent);
+    }
+
+    public void switchToWirelessSettings() {
+        Log.d(TAG, "Switch to wireless Settings");
+        Intent settingsIntent = new Intent(Settings.ACTION_WIRELESS_SETTINGS);
+        cordova.getActivity().startActivity(settingsIntent);
+    }
+    public void switchToNFCSettings() {
+        Log.d(TAG, "Switch to NFC Settings");
+        Intent settingsIntent = new Intent(Settings.ACTION_WIRELESS_SETTINGS);
+        if (android.os.Build.VERSION.SDK_INT >= 16) {
+            settingsIntent = new Intent(android.provider.Settings.ACTION_NFC_SETTINGS);
+        }
         cordova.getActivity().startActivity(settingsIntent);
     }
 
@@ -862,10 +882,10 @@ public class Diagnostic extends CordovaPlugin{
 
         @Override
         public void onReceive(Context context, Intent intent) {
-			if(instance != null){ // if app is running
-				Log.v(TAG, "onReceiveLocationProviderChange");
-            	instance.notifyLocationStateChange();
-			}
+            if(instance != null){ // if app is running
+                Log.v(TAG, "onReceiveLocationProviderChange");
+                instance.notifyLocationStateChange();
+            }
         }
 
     }
